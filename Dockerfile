@@ -7,5 +7,6 @@ ADD entrypoint.sh /entrypoint.sh
 RUN chmod 755 ./entrypoint.sh
 
 EXPOSE 15672 61613
+EXPOSE 5672
 
 CMD ["/entrypoint.sh"]
