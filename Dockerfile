@@ -1,6 +1,10 @@
 FROM rabbitmq:3.6.1
-MAINTAINER Dan MacDonald <dsvmacdonald@nuarch.com>
+MAINTAINER Chris Dorrington <chris.dorrington@ir.com>
 
+RUN apt-get update && \
+    apt-get install -y curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 RUN rabbitmq-plugins enable --offline rabbitmq_management
 
 ADD entrypoint.sh /entrypoint.sh
