@@ -75,6 +75,12 @@ else
     rabbitmqctl stop_app
     rabbitmqctl join_cluster rabbit@$CLUSTER_WITH
     rabbitmqctl start_app
+    
+    # Add a user which can only use the 'aliveness-test' for load balancer health check
+    rabbitmqctl add_user healthcheck pass 
+    rabbitmqctl set_user_tags healthcheck management 
+    rabbitmqctl set_permissions -p / healthcheck '^aliveness-test$' 
+    '^amq\.default$' '^aliveness-test$' 
 
     # Bring rabbit back to the foreground for Docker management
     fg
