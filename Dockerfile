@@ -1,7 +1,7 @@
-FROM rabbitmq:3.5.6
+FROM rabbitmq:3.6.1
 MAINTAINER Dan MacDonald <dsvmacdonald@nuarch.com>
 
-RUN rabbitmq-plugins enable --offline rabbitmq_management rabbitmq_web_stomp rabbitmq_stomp
+RUN rabbitmq-plugins enable --offline rabbitmq_management
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 755 ./entrypoint.sh
